@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ page.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {{# page.description }}
+    <meta name="description" content="{{ . }}">
+  {{/ page.description }}
+    <meta name="author" content="{{ data.author.name }}">
+
+    <!-- Le styles -->
+    {{# stylesheets.load }}
+        bootstrap.min.css
+        style.css
+    {{/ stylesheets.load }}
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.min.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="{{urls.base_path}}">{{ data.title }}</a>
+        </div>
+        <ul class="nav navbar-nav">
+          {{# data.navigation?to__root }}
+            {{> pages_list }}
+          {{/ data.navigation?to__root }}
+        </ul>
+      </div>
+    </div> <!-- navbar -->
+
+    <!-- Begin page content -->
+    <div id="content">
+      <div class="container">
+        {{{ content }}}
+      </div> <!-- container -->
+    </div>
+
+    <div id="footer">
+      <div class="container">
+        <p class="text-muted">&copy; {{ data.author.name }} 2013
+          with help from <a href="http://ruhoh.com" target="_blank" title="The Definitive Technical Blogging Framework">ruhoh</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+        </p>
+      </div>
+    </div>
+
+    {{{ widgets.analytics }}}
+  </body>
+</html>
